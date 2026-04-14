@@ -189,10 +189,10 @@
       position:relative;
       z-index:1;
       display:grid;
-      grid-template-columns:minmax(0, 1fr);
-      gap:10px;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
       padding:0 6px;
-      max-width:360px;
+      max-width:520px;
       width:100%;
       margin:0 auto;
     }
@@ -430,7 +430,7 @@
     </div>
 
     <main class="panel">
-      <div class="top-hint">Tap Start to open your cookie number game</div>
+      <div class="top-hint">Tap Desktop or Mobile to open your cookie number game</div>
 
       <section class="title-wrap">
         <div class="eyebrow">Cute Art + Kid-Friendly Number Practice</div>
@@ -439,9 +439,14 @@
       </section>
 
       <section class="buttons">
-        <button class="btn" id="startBtn" type="button" aria-label="Start Number to 20 Cookie Shop">
-          <span>🍪</span>
-          <span>Start</span>
+        <button class="btn" id="desktopBtn" type="button" aria-label="Open desktop Number to 20 Cookie Shop">
+          <span>🖥️</span>
+          <span>Desktop</span>
+        </button>
+
+        <button class="btn" id="mobileBtn" type="button" aria-label="Open mobile Number to 20 Cookie Shop">
+          <span>📱</span>
+          <span>Mobile</span>
         </button>
       </section>
 
@@ -472,9 +477,11 @@
   </audio>
 
   <script>
-    const GAME_LINK = "https://limkimsze-maker.github.io/P1-Number-to-20-Cookie-Shop/";
+    const DESKTOP_LINK = "https://limkimsze-maker.github.io/P1-Number-to-20-Cookie-Shop/";
+    const MOBILE_LINK = "https://limkimsze-maker.github.io/Number-to-20-Cookie-Shop-Mobile/";
 
-    const startBtn = document.getElementById("startBtn");
+    const desktopBtn = document.getElementById("desktopBtn");
+    const mobileBtn = document.getElementById("mobileBtn");
     const statusText = document.getElementById("statusText");
     const openingAudio = document.getElementById("openingAudio");
 
@@ -486,34 +493,36 @@
       statusText.classList.add("show");
     }
 
-    function disableButton() {
-      startBtn.disabled = true;
+    function disableButtons() {
+      desktopBtn.disabled = true;
+      mobileBtn.disabled = true;
     }
 
     function goTo(link) {
       window.location.href = link;
     }
 
-    function startGame() {
+    function openGame(link, label) {
       if (opening) return;
       opening = true;
 
-      disableButton();
-      showStatus("Opening Number to 20 Cookie Shop...");
+      disableButtons();
+      showStatus(`Opening ${label}...`);
 
       openingAudio.pause();
       openingAudio.currentTime = 0;
 
       openingAudio.addEventListener("ended", () => {
-        goTo(GAME_LINK);
+        goTo(link);
       }, { once:true });
 
       openingAudio.play().catch(() => {
-        goTo(GAME_LINK);
+        goTo(link);
       });
     }
 
-    startBtn.addEventListener("click", startGame);
+    desktopBtn.addEventListener("click", () => openGame(DESKTOP_LINK, "Desktop"));
+    mobileBtn.addEventListener("click", () => openGame(MOBILE_LINK, "Mobile"));
   </script>
 </body>
 </html>
