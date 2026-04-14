@@ -119,7 +119,7 @@
       overflow:hidden;
       position:relative;
       display:grid;
-      grid-template-rows:auto auto 1fr auto auto auto;
+      grid-template-rows:auto auto auto 1fr auto auto auto;
       gap:14px;
       padding:18px 18px max(16px, calc(env(safe-area-inset-bottom) + 8px));
     }
@@ -183,6 +183,18 @@
       font-size:clamp(16px, 2.6vw, 22px);
       line-height:1.25;
       text-shadow:0 2px 0 rgba(0,0,0,.12);
+    }
+
+    .buttons{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr);
+      gap:10px;
+      padding:0 6px;
+      max-width:360px;
+      width:100%;
+      margin:0 auto;
     }
 
     .art-wrap{
@@ -261,15 +273,6 @@
       font-size:clamp(12px, 2vw, 15px);
       font-weight:800;
       box-shadow:0 0 0 1px rgba(255,255,255,.10) inset;
-    }
-
-    .buttons{
-      position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns:minmax(0, 1fr);
-      gap:10px;
-      padding-top:0;
     }
 
     .btn{
@@ -435,6 +438,13 @@
         <p class="sub">Learn numbers and have fun in the cookie shop!</p>
       </section>
 
+      <section class="buttons">
+        <button class="btn" id="startBtn" type="button" aria-label="Start Number to 20 Cookie Shop">
+          <span>🍪</span>
+          <span>Start</span>
+        </button>
+      </section>
+
       <section class="art-wrap">
         <div class="art-frame" aria-label="Number to 20 Cookie Shop cover image">
           <div class="art-bg"></div>
@@ -450,13 +460,6 @@
         <div class="pill">🍪 Number fun to 20</div>
         <div class="pill">🎈 Bright and friendly</div>
         <div class="pill">📱 Mobile ready</div>
-      </section>
-
-      <section class="buttons">
-        <button class="btn" id="startBtn" type="button" aria-label="Start Number to 20 Cookie Shop">
-          <span>🍪</span>
-          <span>Start</span>
-        </button>
       </section>
 
       <div class="status" id="statusText" aria-live="polite"></div>
