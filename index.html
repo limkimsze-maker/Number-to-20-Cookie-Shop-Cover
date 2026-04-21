@@ -189,10 +189,10 @@
       position:relative;
       z-index:1;
       display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
+      grid-template-columns:repeat(3, minmax(0, 1fr));
       gap:12px;
       padding:0 6px;
-      max-width:520px;
+      max-width:760px;
       width:100%;
       margin:0 auto;
     }
@@ -348,6 +348,11 @@
     }
 
     @media (max-width: 700px){
+      .buttons{
+        grid-template-columns:1fr;
+        max-width:420px;
+      }
+
       .panel{
         width:min(100%, 560px);
         border-radius:24px;
@@ -449,6 +454,11 @@
           <span>📱</span>
           <span>Mobile</span>
         </button>
+
+        <button class="btn" id="topicsBtn" type="button" aria-label="Open Number to 20 Cookie Shop by topics">
+          <span>🍪</span>
+          <span>Desktop (By topic)</span>
+        </button>
       </section>
 
       <section class="art-wrap">
@@ -480,9 +490,11 @@
   <script>
     const DESKTOP_LINK = "https://limkimsze-maker.github.io/P1-Number-to-20-Cookie-Shop/";
     const MOBILE_LINK = "https://limkimsze-maker.github.io/Number-to-20-Cookie-Shop-Mobile/";
+    const TOPICS_LINK = "https://limkimsze-maker.github.io/P1-Number-to-20-Cookie-Shop-by-Topics/";
 
     const desktopBtn = document.getElementById("desktopBtn");
     const mobileBtn = document.getElementById("mobileBtn");
+    const topicsBtn = document.getElementById("topicsBtn");
     const statusText = document.getElementById("statusText");
     const openingAudio = document.getElementById("openingAudio");
 
@@ -497,6 +509,7 @@
     function disableButtons() {
       desktopBtn.disabled = true;
       mobileBtn.disabled = true;
+      topicsBtn.disabled = true;
     }
 
     function goTo(link) {
@@ -524,6 +537,7 @@
 
     desktopBtn.addEventListener("click", () => openGame(DESKTOP_LINK, "Desktop"));
     mobileBtn.addEventListener("click", () => openGame(MOBILE_LINK, "Mobile"));
+    topicsBtn.addEventListener("click", () => openGame(TOPICS_LINK, "By topics"));
   </script>
 </body>
 </html>
